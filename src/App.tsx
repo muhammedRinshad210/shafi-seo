@@ -15,6 +15,7 @@ import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { SectionDivider } from './components/SectionDivider';
+import { ambientAudio } from './utils/ambientAudio';
 import './App.css';
 
 export const App: React.FC = () => {
@@ -48,7 +49,12 @@ export const App: React.FC = () => {
       {/* Cinematic Enter Website Experience */}
       {!isEntered && (
         <EnterScreen
-          onEnter={() => setIsEntered(true)}
+          onEnter={(soundEnabled) => {
+            setIsEntered(true);
+            if (soundEnabled) {
+              ambientAudio.start();
+            }
+          }}
         />
       )}
 
