@@ -9,7 +9,8 @@ import {
   Send,
   CheckCircle,
   Copy,
-  AlertCircle
+  AlertCircle,
+  MapPin
 } from 'lucide-react';
 
 interface ContactProps {
@@ -147,6 +148,16 @@ Sent via Shafi SEO Portfolio`;
                     <span className="channel-value">{siteConfig.whatsappDisplay}</span>
                   </div>
                 </a>
+
+                <div className="channel-item location-channel-item">
+                  <div className="channel-icon-circle">
+                    <MapPin size={18} className="text-accent" />
+                  </div>
+                  <div className="channel-text">
+                    <span className="channel-label">Base Location</span>
+                    <span className="channel-value">{siteConfig.location}</span>
+                  </div>
+                </div>
               </div>
 
               {/* Response Promise */}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { siteConfig } from '../data/config';
-import { ArrowUp, Mail, MessageSquare } from 'lucide-react';
+import { ArrowUp, Mail, MessageSquare, MapPin } from 'lucide-react';
 import { SectionDivider } from './SectionDivider';
 import { ScrambleText } from './ScrambleText';
 
@@ -61,6 +61,10 @@ export const Footer: React.FC = () => {
               visibility through methodical technical architecture, search intent taxonomy, and
               ethical white-hat optimization.
             </p>
+            <div className="footer-location-tag">
+              <MapPin size={13} className="text-accent" />
+              <span>Based in Manjeri, Malappuram, Kerala, India</span>
+            </div>
             <div className="footer-availability-tag">
               <span className="status-indicator-dot"></span>
               <span>{siteConfig.availability.badgeText}</span>

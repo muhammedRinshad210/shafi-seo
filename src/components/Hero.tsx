@@ -1,7 +1,7 @@
 import React from 'react';
 import { siteConfig } from '../data/config';
 import { SEOSimulator } from './SEOSimulator';
-import { ArrowDown, ShieldCheck, Sparkles, Terminal } from 'lucide-react';
+import { ArrowDown, ShieldCheck, Sparkles, Terminal, MapPin } from 'lucide-react';
 import { CyberButton } from './CyberButton';
 import { CornerNotch } from './CornerNotch';
 import { ScrambleText } from './ScrambleText';
@@ -30,6 +30,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             <span>
               <ScrambleText text="// SYS.ID: SHAFI_SEO_PROTOCOL" />
             </span>
+          </div>
+
+          <div className="hero-location-pill">
+            <MapPin size={13} className="text-accent" />
+            <span>Based in Manjeri, Kerala</span>
           </div>
 
           <div className="hero-availability-pill">
@@ -61,7 +66,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
 
             <div className="hero-bio-snippet">
               <p>
-                Hi, I'm <strong className="text-white">{siteConfig.specialistName}</strong>. I partner directly with founders and marketing teams to engineer organic search into a high-ROI customer acquisition channel—through technical audits, crawl budget optimization, and white-hat strategy.
+                Hi, I'm <strong className="text-white">{siteConfig.specialistName}</strong>, an independent SEO specialist based in Manjeri, Malappuram. I partner directly with founders and marketing teams to engineer organic search into a high-ROI customer acquisition channel—through technical audits, crawl budget optimization, and white-hat strategy.
               </p>
             </div>
 

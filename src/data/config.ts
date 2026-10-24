@@ -26,7 +26,7 @@ export const siteConfig: SiteConfig = {
     "Technical SEO, keyword research, and on-page optimisation for better search visibility.",
   
   // Confirmed location or working scope
-  location: "Kerala, India & Remote Worldwide",
+  location: "Based in Manjeri, Malappuram, Kerala, India",
   experienceYears: "5+ Years",
 
   // Availability status indicator (configurable)
@@ -54,7 +54,7 @@ export const siteConfig: SiteConfig = {
 export const aboutData = {
   headline: "Engineering Sustainable Organic Growth with Precision.",
   introParagraphs: [
-    "I help growing businesses and digital brands build sustainable search visibility through clean technical architecture and high-intent keyword mapping.",
+    "Based in Manjeri, Malappuram, I help growing businesses and digital brands build sustainable search visibility through clean technical architecture and high-intent keyword mapping.",
     "Instead of chasing vanity impressions with generic blog posts, I focus on fixing crawl bottlenecks, optimizing page experience, and ranking for queries that convert into genuine revenue."
   ],
   workingPhilosophy: [
