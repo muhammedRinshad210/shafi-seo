@@ -1,0 +1,6 @@
+# Robots.txt for Shafi SEO Specialist Portfolio
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://shafi-seo.com/sitemap.xml

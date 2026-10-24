@@ -1,0 +1,305 @@
+/* =====================================================================
+   SHAFI SEO - NEOCULTURAL COUTURE & CYBER-EDITORIAL DESIGN SYSTEM
+   ===================================================================== */
+
+:root {
+  /* Color Palette matching NeoCultural Couture Reference */
+  --bg-primary: #111215;
+  --bg-surface: #18191F;
+  --bg-surface-elevated: #20222B;
+  --bg-surface-translucent: rgba(24, 25, 31, 0.85);
+
+  --text-primary: #F5F5F7;
+  --text-secondary: #C5B6AF; /* Warm Stone from NeoCultural */
+  --text-muted: #83807D;
+  --text-inverse: #111215;
+
+  /* Accent: Neon Acid Electric Lime */
+  --accent: #EBFB1D;
+  --accent-hover: #F2FD54;
+  --accent-glow: rgba(235, 251, 29, 0.2);
+  --accent-glow-strong: rgba(235, 251, 29, 0.38);
+  --accent-muted: rgba(235, 251, 29, 0.08);
+
+  /* Semantic Indicators */
+  --color-growth: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(197, 182, 175, 0.12);
+  --border-medium: rgba(197, 182, 175, 0.22);
+  --border-strong: rgba(197, 182, 175, 0.35);
+  --border-accent: rgba(235, 251, 29, 0.45);
+
+  /* Typography */
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif-italic: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* Layout Spacing */
+  --container-max-width: 1260px;
+  --container-padding: clamp(1rem, 3.5vw, 2.5rem);
+  --section-spacing-y: clamp(3.5rem, 8vw, 7.5rem);
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Base Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  position: relative;
+}
+
+/* Hide Default Cursor on fine-pointer devices for the custom crosshair reticle */
+@media (pointer: fine) {
+  body {
+    cursor: default;
+  }
+}
+
+/* Accessibility: Visible Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1.5rem;
+  background: var(--accent);
+  color: var(--text-inverse);
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  z-index: 999999;
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1.5rem;
+  outline: 3px solid var(--accent-hover);
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(1.85rem, 5.5vw, 4.5rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3.8vw, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.85rem);
+  letter-spacing: -0.02em;
+}
+
+h4 {
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+}
+
+/* Signature NeoCultural Couture Stylized Letter Alternate */
+.text-span {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0 0.04em;
+  display: inline-block;
+}
+
+p {
+  color: var(--text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: var(--font-body);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Common Layout Elements */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  position: relative;
+  z-index: 1;
+}
+
+.section {
+  position: relative;
+  padding-top: var(--section-spacing-y);
+  padding-bottom: var(--section-spacing-y);
+  border-bottom: 1px solid var(--border-subtle);
+  scroll-margin-top: clamp(80px, 10vh, 105px);
+}
+
+section[id], div[id] {
+  scroll-margin-top: clamp(80px, 10vh, 105px);
+}
+
+/* Editorial Section Header */
+.section-header {
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.section-eyebrow::before {
+  content: '■';
+  font-size: 0.65rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent);
+}
+
+.section-title {
+  margin-bottom: 1.25rem;
+}
+
+.section-lead {
+  max-width: 660px;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Accent Highlight utility */
+.text-accent {
+  color: var(--accent);
+}
+
+/* Interactive Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.875rem 1.625rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-smooth);
+  white-space: nowrap;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.625rem 1.125rem;
+  font-size: 0.75rem;
+}
+
+/* Focus Visible states for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Ambient glow accents */
+.glow-orb {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+  opacity: 0.28;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
