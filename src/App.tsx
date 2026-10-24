@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { EnterScreen } from './components/EnterScreen';
 import { CyberGridCanvas } from './components/CyberGridCanvas';
 import { CustomCursor } from './components/CustomCursor';
 import { LeadDrawer } from './components/LeadDrawer';
@@ -17,6 +18,9 @@ import { SectionDivider } from './components/SectionDivider';
 import './App.css';
 
 export const App: React.FC = () => {
+  const [isEntered, setIsEntered] = useState(() => {
+    return typeof window !== 'undefined' && sessionStorage.getItem('shafi_seo_entered') === 'true';
+  });
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedServiceForInquiry, setSelectedServiceForInquiry] = useState<string | undefined>(
     undefined
@@ -41,6 +45,13 @@ export const App: React.FC = () => {
 
   return (
     <div className="portfolio-app-root">
+      {/* Cinematic Enter Website Experience */}
+      {!isEntered && (
+        <EnterScreen
+          onEnter={() => setIsEntered(true)}
+        />
+      )}
+
       {/* Interactive Background Grid with Electric Lime Mouse Trail */}
       <CyberGridCanvas />
 
