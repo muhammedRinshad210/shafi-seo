@@ -40,7 +40,7 @@
 
   /* Layout Spacing */
   --container-max-width: 1260px;
-  --container-padding: clamp(1rem, 3.5vw, 2.5rem);
+  --container-padding: clamp(0.85rem, 3.5vw, 2.5rem);
   --section-spacing-y: clamp(3.5rem, 8vw, 7.5rem);
   --radius-sm: 4px;
   --radius-md: 10px;
@@ -116,6 +116,8 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
   letter-spacing: -0.025em;
   font-weight: 700;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 h1 {
@@ -258,6 +260,21 @@ section[id], div[id] {
   position: relative;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  max-width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--text-inverse);
+  font-weight: 700;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -276,6 +293,11 @@ section[id], div[id] {
 .btn-sm {
   padding: 0.625rem 1.125rem;
   font-size: 0.75rem;
+}
+
+.btn-full {
+  width: 100%;
+  display: flex;
 }
 
 /* Focus Visible states for keyboard accessibility */
