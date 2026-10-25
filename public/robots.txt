@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://shafi-seo.com/sitemap.xml
+Sitemap: https://muhammedrinshad210.github.io/shafi-seo/sitemap.xml
