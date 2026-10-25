@@ -62,6 +62,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             {project.title}
           </h2>
 
+          {project.image && (
+            <div className="modal-cover-wrap" style={{ margin: '1rem 0 1.25rem', borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+              <img src={project.image} alt={project.title} style={{ width: '100%', maxHeight: '360px', objectFit: 'cover', display: 'block' }} />
+            </div>
+          )}
+
           <p className="modal-summary">{project.summary}</p>
 
           {/* Results Metric Highlight Strip */}

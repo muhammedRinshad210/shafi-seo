@@ -1,5 +1,5 @@
 import React from 'react';
-import { siteConfig, aboutData } from '../data/config';
+import { useCMSData } from '../context/useCMSData';
 import { MapPin, Briefcase, CheckCircle, Code2, ArrowUpRight } from 'lucide-react';
 
 interface AboutProps {
@@ -7,6 +7,8 @@ interface AboutProps {
 }
 
 export const About: React.FC<AboutProps> = ({ onOpenContact }) => {
+  const { siteConfig, aboutData } = useCMSData();
+
   return (
     <section className="section about-section" id="about" aria-labelledby="about-heading">
       <div className="container">

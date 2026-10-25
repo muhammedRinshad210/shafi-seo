@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { siteConfig } from '../data/config';
-import { servicesData } from '../data/services';
+import { useCMSData } from '../context/useCMSData';
 import {
   Mail,
   MessageSquare,
@@ -18,11 +17,12 @@ interface ContactProps {
 }
 
 export const Contact: React.FC<ContactProps> = ({ preselectedService }) => {
+  const { siteConfig, services } = useCMSData();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     websiteUrl: '',
-    serviceRequired: preselectedService || 'Technical SEO & Architecture Audit',
+    serviceRequired: preselectedService || (services[0]?.title ?? 'Technical SEO & Architecture Audit'),
     trafficScope: '10k – 50k visitors/mo',
     message: ''
   });
@@ -278,7 +278,7 @@ Sent via Shafi SEO Portfolio`;
                         }
                         className="form-select"
                       >
-                        {servicesData.map((s) => (
+                        {services.map((s) => (
                           <option key={s.id} value={s.title}>
                             {s.title}
                           </option>

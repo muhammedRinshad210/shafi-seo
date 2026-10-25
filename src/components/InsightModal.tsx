@@ -60,6 +60,12 @@ export const InsightModal: React.FC<InsightModalProps> = ({ article, onClose }) 
             {article.title}
           </h2>
 
+          {article.coverImage && (
+            <div className="modal-cover-wrap" style={{ margin: '1rem 0 1.25rem', borderRadius: '4px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+              <img src={article.coverImage} alt={article.title} style={{ width: '100%', maxHeight: '300px', objectFit: 'cover', display: 'block' }} />
+            </div>
+          )}
+
           <div className="modal-article-summary-box">
             <p className="modal-article-lead">{article.summary}</p>
           </div>

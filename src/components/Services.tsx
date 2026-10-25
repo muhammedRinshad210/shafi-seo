@@ -1,5 +1,5 @@
 import React from 'react';
-import { servicesData } from '../data/services';
+import { useCMSData } from '../context/useCMSData';
 import {
   Cpu,
   Target,
@@ -9,7 +9,10 @@ import {
   Compass,
   Check,
   ArrowUpRight,
-  AlertCircle
+  AlertCircle,
+  Gauge,
+  ShieldCheck,
+  Layers
 } from 'lucide-react';
 
 interface ServicesProps {
@@ -17,6 +20,8 @@ interface ServicesProps {
 }
 
 export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
+  const { services } = useCMSData();
+
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'Cpu':
@@ -31,6 +36,12 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
         return <MapPin className="service-icon" size={24} />;
       case 'Compass':
         return <Compass className="service-icon" size={24} />;
+      case 'Gauge':
+        return <Gauge className="service-icon" size={24} />;
+      case 'ShieldCheck':
+        return <ShieldCheck className="service-icon" size={24} />;
+      case 'Layers':
+        return <Layers className="service-icon" size={24} />;
       default:
         return <Cpu className="service-icon" size={24} />;
     }
@@ -54,10 +65,21 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
 
         {/* Services Grid */}
         <div className="services-grid">
-          {servicesData.map((service, index) => (
+          {services.map((service, index) => (
             <article key={service.id} className="service-card">
               <div className="service-card-top">
-                <div className="service-icon-wrap">{getIcon(service.iconName)}</div>
+                <div className="service-icon-wrap">
+                  {service.customIconUrl ? (
+                    <img
+                      src={service.customIconUrl}
+                      alt={service.title}
+                      className="service-custom-icon"
+                      style={{ width: 24, height: 24, objectFit: 'contain' }}
+                    />
+                  ) : (
+                    getIcon(service.iconName)
+                  )}
+                </div>
                 <span className="service-badge">{service.badge}</span>
                 <span className="service-index">0{index + 1}</span>
               </div>

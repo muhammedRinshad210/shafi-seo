@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { projectsData } from '../data/projects';
+import { useCMSData } from '../context/useCMSData';
 import type { Project } from '../types';
 import { ProjectModal } from './ProjectModal';
 import { Clock, Sparkles, FolderKanban, LayoutGrid, ListFilter } from 'lucide-react';
@@ -12,11 +12,12 @@ interface ProjectsProps {
 }
 
 export const Projects: React.FC<ProjectsProps> = ({ onOpenContact }) => {
+  const { projects } = useCMSData();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  const publishedProjects = projectsData.filter((p) => p.published);
+  const publishedProjects = projects.filter((p) => p.published);
   const industries = ['All', ...Array.from(new Set(publishedProjects.map((p) => p.industry)))];
 
   const filteredProjects =

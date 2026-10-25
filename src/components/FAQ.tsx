@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { faqData } from '../data/faq';
+import { useCMSData } from '../context/useCMSData';
 import { Plus, Minus, HelpCircle, ArrowUpRight } from 'lucide-react';
 
 interface FAQProps {
@@ -7,7 +7,10 @@ interface FAQProps {
 }
 
 export const FAQ: React.FC<FAQProps> = ({ onOpenContact }) => {
-  const [openIds, setOpenIds] = useState<string[]>([faqData[0].id]); // First open by default
+  const { faqItems } = useCMSData();
+  const [openIds, setOpenIds] = useState<string[]>(() =>
+    faqItems.length > 0 ? [faqItems[0].id] : []
+  );
 
   const toggleFAQ = (id: string) => {
     setOpenIds((prev) =>
@@ -33,7 +36,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenContact }) => {
 
         {/* Accordion List */}
         <div className="faq-accordion-list" role="region" aria-label="Frequently Asked Questions">
-          {faqData.map((item, idx) => {
+          {faqItems.map((item, idx) => {
             const isOpen = openIds.includes(item.id);
             const buttonId = `faq-btn-${item.id}`;
             const contentId = `faq-content-${item.id}`;

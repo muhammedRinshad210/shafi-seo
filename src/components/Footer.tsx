@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { siteConfig } from '../data/config';
+import { useCMSData } from '../context/useCMSData';
 import { ArrowUp, Mail, MessageSquare, MapPin } from 'lucide-react';
 import { SectionDivider } from './SectionDivider';
 import { ScrambleText } from './ScrambleText';
@@ -7,6 +7,7 @@ import { ScrambleText } from './ScrambleText';
 const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer: React.FC = () => {
+  const { siteConfig } = useCMSData();
   const [localTime, setLocalTime] = useState<string>('');
 
   useEffect(() => {

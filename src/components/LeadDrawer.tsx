@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { siteConfig } from '../data/config';
-import { servicesData } from '../data/services';
+import { useCMSData } from '../context/useCMSData';
 import { Mail, MessageSquare, CheckCircle, Copy } from 'lucide-react';
 import { CyberButton } from './CyberButton';
 import { ScrambleText } from './ScrambleText';
@@ -16,11 +15,12 @@ export const LeadDrawer: React.FC<LeadDrawerProps> = ({
   onClose,
   initialService
 }) => {
+  const { siteConfig, services } = useCMSData();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     websiteUrl: '',
-    serviceRequired: initialService || servicesData[0].title,
+    serviceRequired: initialService || (services[0]?.title ?? 'Technical SEO & Architecture Audit'),
     monthlyTraffic: '10k – 50k visitors/mo',
     message: ''
   });
@@ -187,7 +187,7 @@ Origin: Shafi Independent SEO Platform`;
                 onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                 className="drawer_select"
               >
-                {servicesData.map((s) => (
+                {services.map((s) => (
                   <option key={s.id} value={s.title}>
                     {s.title}
                   </option>

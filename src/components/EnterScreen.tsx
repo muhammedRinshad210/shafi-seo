@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { siteConfig } from '../data/config';
+import { useCMSData } from '../context/useCMSData';
 import { Volume2, VolumeX, Sparkles, Terminal } from 'lucide-react';
 import { CyberButton } from './CyberButton';
 import { ScrambleText } from './ScrambleText';
@@ -9,6 +9,7 @@ interface EnterScreenProps {
 }
 
 export const EnterScreen: React.FC<EnterScreenProps> = ({ onEnter }) => {
+  const { siteConfig } = useCMSData();
   const [isDismissed, setIsDismissed] = useState(() => {
     return typeof window !== 'undefined' && sessionStorage.getItem('shafi_seo_entered') === 'true';
   });

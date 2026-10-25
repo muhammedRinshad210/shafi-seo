@@ -1,5 +1,5 @@
 import React from 'react';
-import { siteConfig } from '../data/config';
+import { useCMSData } from '../context/useCMSData';
 import { SEOSimulator } from './SEOSimulator';
 import { ArrowDown, ShieldCheck, Sparkles, Terminal, MapPin } from 'lucide-react';
 import { CyberButton } from './CyberButton';
@@ -11,6 +11,8 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
+  const { siteConfig } = useCMSData();
+
   return (
     <section className="hero-section" id="hero" aria-labelledby="hero-headline" no-trail="">
       <CornerNotch position="top-left" />

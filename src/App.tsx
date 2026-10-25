@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CMSProvider } from './context/CMSContext';
 import { EnterScreen } from './components/EnterScreen';
 import { CyberGridCanvas } from './components/CyberGridCanvas';
 import { CustomCursor } from './components/CustomCursor';
@@ -18,7 +19,7 @@ import { SectionDivider } from './components/SectionDivider';
 import { ambientAudio } from './utils/ambientAudio';
 import './App.css';
 
-export const App: React.FC = () => {
+const PortfolioContent: React.FC = () => {
   const [isEntered, setIsEntered] = useState(() => {
     return typeof window !== 'undefined' && sessionStorage.getItem('shafi_seo_entered') === 'true';
   });
@@ -114,6 +115,14 @@ export const App: React.FC = () => {
       {/* Section K: Footer */}
       <Footer />
     </div>
+  );
+};
+
+export const App: React.FC = () => {
+  return (
+    <CMSProvider>
+      <PortfolioContent />
+    </CMSProvider>
   );
 };
 

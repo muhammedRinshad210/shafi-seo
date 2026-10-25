@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { siteConfig } from '../data/config';
+import { useCMSData } from '../context/useCMSData';
 import { Menu, X } from 'lucide-react';
 import { AudioToggle } from './AudioToggle';
 import { CyberButton } from './CyberButton';
@@ -10,6 +10,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
+  const { siteConfig } = useCMSData();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

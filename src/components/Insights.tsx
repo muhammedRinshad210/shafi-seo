@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { insightsData } from '../data/insights';
+import { useCMSData } from '../context/useCMSData';
 import type { InsightArticle } from '../types';
 import { InsightModal } from './InsightModal';
 import { ArrowUpRight, Clock, Calendar } from 'lucide-react';
 
 export const Insights: React.FC = () => {
+  const { insights } = useCMSData();
   const [selectedArticle, setSelectedArticle] = useState<InsightArticle | null>(null);
 
-  const publishedArticles = insightsData.filter((a) => a.published);
+  const publishedArticles = insights.filter((a) => a.published);
 
   if (publishedArticles.length === 0) {
     return null; // Gracefully hidden if no articles are published as requested

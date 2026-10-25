@@ -14,6 +14,8 @@ export interface Project {
   duration: string;
   tools: string[];
   image?: string;
+  gallery?: string[];
+  projectUrl?: string;
   published: boolean;
   featured?: boolean;
 }
@@ -27,6 +29,7 @@ export interface Service {
   expectedImpact: string;
   badge: string;
   iconName: string;
+  customIconUrl?: string;
 }
 
 export interface FAQItem {
@@ -45,6 +48,7 @@ export interface InsightArticle {
   date: string;
   category: string;
   content: string[];
+  coverImage?: string;
   published: boolean;
 }
 
