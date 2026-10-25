@@ -4,7 +4,7 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemas';
 
 // Support both environment variable and fallback configuration
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID || '7g994x9u';
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'trjhguns';
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production';
 
 export default defineConfig({

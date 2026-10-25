@@ -2,7 +2,7 @@ import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
 // Environment variables configured in Vite or GitHub Actions
-export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '';
+export const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || 'trjhguns';
 export const dataset = import.meta.env.VITE_SANITY_DATASET || 'production';
 export const apiVersion = import.meta.env.VITE_SANITY_API_VERSION || '2024-01-01';
 

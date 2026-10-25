@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 studio/dist
+.sanity
+studio/.sanity
 *.local
 
 # Editor directories and files

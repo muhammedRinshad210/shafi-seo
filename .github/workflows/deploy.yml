@@ -42,6 +42,7 @@ jobs:
         env:
           VITE_SANITY_PROJECT_ID: ${{ vars.VITE_SANITY_PROJECT_ID }}
           VITE_SANITY_DATASET: ${{ vars.VITE_SANITY_DATASET || 'production' }}
+          VITE_SANITY_API_VERSION: ${{ vars.VITE_SANITY_API_VERSION || '2024-01-01' }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

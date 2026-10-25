@@ -74,10 +74,13 @@ export const CMSProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             },
             contactEmail: cms.contactEmail || prev.contactEmail,
             whatsappNumber: cms.whatsappNumber || prev.whatsappNumber,
-            whatsappDisplay: cms.whatsappDisplay || prev.whatsappDisplay,
+            whatsappDisplay: (cms.whatsappDisplay && cms.whatsappDisplay !== "+91 98765 43210")
+              ? cms.whatsappDisplay
+              : (cms.whatsappNumber || prev.whatsappDisplay),
             linkedinUrl: cms.socialLinks?.linkedinUrl ?? prev.linkedinUrl,
             twitterUrl: cms.socialLinks?.twitterUrl ?? prev.twitterUrl,
             githubUrl: cms.socialLinks?.githubUrl ?? prev.githubUrl,
+            ctaLabel: cms.ctaLabel || prev.ctaLabel,
           }));
 
           if (cms.aboutHeadline || (cms.aboutIntro && cms.aboutIntro.length > 0)) {

@@ -71,5 +71,6 @@ export interface SiteConfig {
   linkedinUrl?: string;
   twitterUrl?: string;
   githubUrl?: string;
+  ctaLabel?: string;
   siteUrl: string;
 }
