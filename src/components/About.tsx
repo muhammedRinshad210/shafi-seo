@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCMSData } from '../context/useCMSData';
 import { MapPin, Briefcase, CheckCircle, Code2, ArrowUpRight } from 'lucide-react';
+import { createDataAttribute } from '../lib/visualEditing';
 
 interface AboutProps {
   onOpenContact: () => void;
@@ -9,15 +10,23 @@ interface AboutProps {
 export const About: React.FC<AboutProps> = ({ onOpenContact }) => {
   const { siteConfig, aboutData } = useCMSData();
 
+  const aboutAttr = createDataAttribute({
+    id: 'siteSettings',
+    type: 'siteSettings',
+  });
+
   return (
     <section className="section about-section" id="about" aria-labelledby="about-heading">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-eyebrow">Approach &amp; Philosophy</span>
-          <h2 id="about-heading" className="section-title">
-            Engineering Search Visibility with{' '}
-            <span className="text-accent">Precision &amp; Transparency.</span>
+          <h2
+            id="about-heading"
+            className="section-title"
+            data-sanity={aboutAttr.scope('aboutHeadline')}
+          >
+            {aboutData.headline}
           </h2>
           <p className="section-lead">
             No algorithm tricks, no vanity impression guarantees. Just clean technical architecture,
@@ -34,8 +43,18 @@ export const About: React.FC<AboutProps> = ({ onOpenContact }) => {
                 <span className="avatar-initials">S</span>
               </div>
               <div className="profile-identity">
-                <h3 className="profile-name">{siteConfig.specialistName}</h3>
-                <span className="profile-role">Independent SEO Specialist</span>
+                <h3
+                  className="profile-name"
+                  data-sanity={aboutAttr.scope('specialistName')}
+                >
+                  {siteConfig.specialistName}
+                </h3>
+                <span
+                  className="profile-role"
+                  data-sanity={aboutAttr.scope('brandTitle')}
+                >
+                  {siteConfig.brandTitle || 'Independent SEO Specialist'}
+                </span>
               </div>
             </div>
 
@@ -49,78 +68,66 @@ export const About: React.FC<AboutProps> = ({ onOpenContact }) => {
               <div className="profile-meta-item">
                 <Briefcase size={16} className="text-accent" />
                 <span>
-                  <strong>Experience:</strong> {siteConfig.experienceYears} Dedicated Search Strategy
+                  <strong>Experience:</strong> {siteConfig.experienceYears} Search Optimization
                 </span>
               </div>
               <div className="profile-meta-item">
                 <Code2 size={16} className="text-accent" />
                 <span>
-                  <strong>Specialty:</strong> Technical SEO &amp; Organic Funnels
+                  <strong>Focus:</strong> Technical Architecture, Local SEO &amp; Audits
                 </span>
               </div>
             </div>
 
-            <div className="profile-statement-box">
-              <p className="statement-quote">
-                "Real SEO is not about chasing Google’s algorithm with manipulative hacks. It is about
-                building the fastest, most coherent, and most authoritative answer to what your ideal
-                customer is searching for."
-              </p>
-              <span className="statement-author">— {siteConfig.specialistName}</span>
-            </div>
-
-            <div className="profile-cta-wrap">
-              <button onClick={onOpenContact} className="btn btn-secondary btn-full">
-                <span>Request an Audit Consultation</span>
+            <div className="profile-action-box">
+              <button
+                type="button"
+                onClick={onOpenContact}
+                className="btn btn-primary w-full justify-center"
+              >
+                <span>Request Technical Consultation</span>
                 <ArrowUpRight size={16} />
               </button>
             </div>
           </div>
 
-          {/* Right Column: Bio Narrative & Core Values */}
-          <div className="about-narrative">
-            <div className="narrative-body">
-              {aboutData.introParagraphs.map((para, idx) => (
-                <p key={idx} className="narrative-p">
-                  {para}
-                </p>
-              ))}
-            </div>
+          {/* Right Column: Editorial Narrative & Principles */}
+          <div
+            className="about-narrative-column"
+            data-sanity={aboutAttr.scope('aboutIntro')}
+          >
+            {aboutData.introParagraphs.map((paragraph, index) => (
+              <p key={index} className="about-narrative-p">
+                {paragraph}
+              </p>
+            ))}
 
-            {/* Working Principles */}
-            <div className="values-grid">
-              {aboutData.workingPhilosophy.map((item, idx) => (
-                <div key={idx} className="value-item">
-                  <div className="value-number">0{idx + 1}</div>
-                  <h4 className="value-title">{item.title}</h4>
-                  <p className="value-desc">{item.description}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Verified Specializations */}
-            <div className="specializations-block">
-              <h4 className="specializations-title">Core Search Disciplines</h4>
-              <div className="specializations-tags">
-                {aboutData.verifiedSpecializations.map((spec, idx) => (
-                  <span key={idx} className="spec-tag">
-                    <CheckCircle size={14} className="text-accent" />
-                    <span>{spec}</span>
+            {/* Core Operating Principles */}
+            <div className="about-principles-card">
+              <h4 className="principles-title">// CORE OPERATING PRINCIPLES</h4>
+              <ul className="principles-list">
+                <li className="principle-item">
+                  <CheckCircle size={16} className="text-accent shrink-0" />
+                  <span>
+                    <strong>Direct Engagement:</strong> You communicate with Shafi—no junior account
+                    managers or outsourced guesswork.
                   </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Core Tooling Stack */}
-            <div className="toolkit-block">
-              <span className="toolkit-label">Specialist Diagnostic Stack:</span>
-              <div className="toolkit-list">
-                {aboutData.coreToolkit.map((tool, idx) => (
-                  <span key={idx} className="tool-pill">
-                    {tool}
+                </li>
+                <li className="principle-item">
+                  <CheckCircle size={16} className="text-accent shrink-0" />
+                  <span>
+                    <strong>Diagnostic Before Prescriptive:</strong> Every engagement begins with
+                    deep log file, indexation, and architecture analysis.
                   </span>
-                ))}
-              </div>
+                </li>
+                <li className="principle-item">
+                  <CheckCircle size={16} className="text-accent shrink-0" />
+                  <span>
+                    <strong>White-Hat, Sustainable Rankings:</strong> Zero manipulative link schemes
+                    or automated spun content that risk Google penalties.
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

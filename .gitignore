@@ -13,6 +13,8 @@ dist-ssr
 studio/dist
 .sanity
 studio/.sanity
+studio/.sanity-config
+.sanity-config
 *.local
 
 # Editor directories and files

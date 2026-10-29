@@ -38,10 +38,13 @@ export function urlFor(source: any) {
 }
 
 /**
- * GROQ Queries for published website content
+ * GROQ Queries for website content & page builder
  */
 export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0]`;
+export const PAGE_QUERY = `*[_type == "page" && (slug.current == "home" || _id in ["homePage", "drafts.homePage"])][0]`;
 export const SERVICES_QUERY = `*[_type == "service" && published == true] | order(order asc)`;
 export const PROJECTS_QUERY = `*[_type == "project" && published == true] | order(order asc)`;
 export const FAQ_QUERY = `*[_type == "faq" && published == true] | order(order asc)`;
 export const INSIGHTS_QUERY = `*[_type == "insight" && published == true] | order(order asc)`;
+
+export { createDataAttribute, isVisualEditingActive, sendStudioFocus } from './visualEditing';

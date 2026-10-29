@@ -5,13 +5,35 @@ import { ArrowDown, ShieldCheck, Sparkles, Terminal, MapPin } from 'lucide-react
 import { CyberButton } from './CyberButton';
 import { CornerNotch } from './CornerNotch';
 import { ScrambleText } from './ScrambleText';
+import { createDataAttribute } from '../lib/visualEditing';
 
 interface HeroProps {
   onOpenContact: () => void;
+  overrideHeadline?: string;
+  overrideSubheadline?: string;
+  overrideExperienceBadge?: string;
+  overrideCtaPrimary?: string;
+  overrideCtaSecondary?: string;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
+export const Hero: React.FC<HeroProps> = ({
+  onOpenContact,
+  overrideHeadline,
+  overrideSubheadline,
+  overrideCtaPrimary,
+  overrideCtaSecondary,
+}) => {
   const { siteConfig } = useCMSData();
+
+  const heroAttr = createDataAttribute({
+    id: 'siteSettings',
+    type: 'siteSettings',
+  });
+
+  const headline = overrideHeadline || siteConfig.heroHeadline;
+  const subheadline = overrideSubheadline || siteConfig.heroSubheadline;
+  const primaryCta = overrideCtaPrimary || 'Discuss Your Project';
+  const secondaryCta = overrideCtaSecondary || 'View My Work';
 
   return (
     <section className="hero-section" id="hero" aria-labelledby="hero-headline" no-trail="">
@@ -34,12 +56,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             </span>
           </div>
 
-          <div className="hero-location-pill">
+          <div
+            className="hero-location-pill"
+            data-sanity={heroAttr.scope('location')}
+          >
             <MapPin size={13} className="text-accent" />
-            <span>Based in Manjeri, Kerala</span>
+            <span>{siteConfig.location || 'Based in Manjeri, Kerala'}</span>
           </div>
 
-          <div className="hero-availability-pill">
+          <div
+            className="hero-availability-pill"
+            data-sanity={heroAttr.scope('availability.badgeText')}
+          >
             <span className="status-indicator-dot"></span>
             <span>{siteConfig.availability.badgeText}</span>
           </div>
@@ -57,13 +85,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
           <div className="hero-content">
             <div className="hero-digital-tag">// ARCHITECTURAL SEARCH STRATEGY</div>
 
-            <h1 id="hero-headline" className="hero-title">
-              SEO That Helps The <span className="text-span">R</span>ight People{' '}
-              <span className="text-accent hero-title-accent">Find You.</span>
+            <h1
+              id="hero-headline"
+              className="hero-title"
+              data-sanity={heroAttr.scope('heroHeadline')}
+            >
+              {headline}
             </h1>
 
-            <p className="hero-lead">
-              Technical SEO, keyword research, and on-page optimisation designed for enduring search visibility.
+            <p
+              className="hero-lead"
+              data-sanity={heroAttr.scope('heroSubheadline')}
+            >
+              {subheadline}
             </p>
 
             <div className="hero-bio-snippet">
@@ -75,14 +109,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact }) => {
             {/* High-Converting Actions */}
             <div className="hero-actions">
               <CyberButton
-                label="Discuss Your Project"
+                label={primaryCta}
                 onClick={onOpenContact}
                 size="md"
               />
 
               <a href="#work" className="btn btn-secondary" aria-label="View selected SEO work">
                 <span>
-                  <ScrambleText text="View My Work" />
+                  <ScrambleText text={secondaryCta} />
                 </span>
                 <ArrowDown size={15} />
               </a>

@@ -74,3 +74,147 @@ export interface SiteConfig {
   ctaLabel?: string;
   siteUrl: string;
 }
+
+// -------------------------------------------------------------
+// Visual Page Builder Section Block Types
+// -------------------------------------------------------------
+
+export interface BaseBlock {
+  _key: string;
+  _type: string;
+}
+
+export interface HeroBlock extends BaseBlock {
+  _type: 'heroBlock';
+  headline?: string;
+  subheadline?: string;
+  experienceBadge?: string;
+  ctaPrimaryLabel?: string;
+  ctaSecondaryLabel?: string;
+}
+
+export interface HeadingTextBlock extends BaseBlock {
+  _type: 'headingTextBlock';
+  badge?: string;
+  headline: string;
+  text: string;
+  alignment?: 'left' | 'center' | 'right';
+  variant?: 'box' | 'minimal' | 'accent';
+}
+
+export interface RichTextBlock extends BaseBlock {
+  _type: 'richTextBlock';
+  badge?: string;
+  headline?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  body?: any[];
+}
+
+export interface ImageBlock extends BaseBlock {
+  _type: 'imageBlock';
+  badge?: string;
+  headline?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  image?: any;
+  imageUrl?: string;
+  alt: string;
+  caption?: string;
+  aspectRatio?: '16:9' | '4:3' | 'square' | 'wide';
+  maxWidth?: 'full' | 'constrained' | 'compact';
+}
+
+export interface ImageWithTextBlock extends BaseBlock {
+  _type: 'imageWithTextBlock';
+  badge?: string;
+  headline: string;
+  text: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  image?: any;
+  imageUrl?: string;
+  alt: string;
+  imagePosition?: 'left' | 'right';
+  ctaLabel?: string;
+  ctaAction?: 'drawer' | 'whatsapp' | 'contact';
+}
+
+export interface CtaBlock extends BaseBlock {
+  _type: 'ctaBlock';
+  badge?: string;
+  headline: string;
+  description?: string;
+  buttonText: string;
+  buttonAction: 'drawer' | 'whatsapp' | 'contact' | 'link';
+  customUrl?: string;
+}
+
+export interface ServicesBlock extends BaseBlock {
+  _type: 'servicesBlock';
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+}
+
+export interface ProjectsBlock extends BaseBlock {
+  _type: 'projectsBlock';
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+}
+
+export interface ProcessBlock extends BaseBlock {
+  _type: 'processBlock';
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+}
+
+export interface TrustBlock extends BaseBlock {
+  _type: 'trustBlock';
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+}
+
+export interface FaqBlock extends BaseBlock {
+  _type: 'faqBlock';
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+}
+
+export interface InsightsBlock extends BaseBlock {
+  _type: 'insightsBlock';
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+}
+
+export interface ContactBlock extends BaseBlock {
+  _type: 'contactBlock';
+  badge?: string;
+  headline?: string;
+  subheadline?: string;
+}
+
+export type PageSectionBlock =
+  | HeroBlock
+  | HeadingTextBlock
+  | RichTextBlock
+  | ImageBlock
+  | ImageWithTextBlock
+  | CtaBlock
+  | ServicesBlock
+  | ProjectsBlock
+  | ProcessBlock
+  | TrustBlock
+  | FaqBlock
+  | InsightsBlock
+  | ContactBlock;
+
+export interface PageDocument {
+  _id: string;
+  _type: 'page';
+  title: string;
+  slug?: { current: string };
+  sections?: PageSectionBlock[];
+}
